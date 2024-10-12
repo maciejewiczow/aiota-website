@@ -1,0 +1,16 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "custom/test-block-template",
+    "version": "0.1.0",
+    "title": "Template testing block",
+    "description": "Just testing templates",
+    "attributes": {
+        "myAttribute": {
+            "type": "string"
+        }
+    },
+    "allowedBlocks": ["custom/test", "custom/test-block-with-children"],
+    "editorScript": "file:./index.js",
+    "editorStyle": "file:./index.css"
+}

@@ -1,0 +1,19 @@
+.root {
+    margin: 0;
+}
+
+.small {
+    font-size: 14px;
+}
+
+.medium {
+    font-size: 16px;
+}
+
+.large {
+    font-size: 22px;
+}
+
+.xLarge {
+    font-size: 28px;
+}

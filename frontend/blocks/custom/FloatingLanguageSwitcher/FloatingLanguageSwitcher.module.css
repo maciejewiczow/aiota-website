@@ -1,0 +1,36 @@
+.root {
+    list-style-type: none;
+    display: flex;
+    gap: 12px;
+    padding: 0;
+    margin: 0;
+
+    position: absolute;
+
+    --horizontal-spacing: 32px;
+    --vertical-spacing: 16px;
+}
+
+.topLeft {
+    top: calc(var(--strip-height, 0) + var(--vertical-spacing));
+    left: var(--horizontal-spacing);
+}
+
+.topRight {
+    top: calc(var(--strip-height, 0) + var(--vertical-spacing));
+    right: var(--horizontal-spacing);
+}
+
+.bottomRight {
+    bottom: calc(var(--strip-height, 0) + var(--vertical-spacing));
+    right: var(--horizontal-spacing);
+}
+
+.bottomLeft {
+    bottom: calc(var(--strip-height, 0) + var(--vertical-spacing));
+    left: var(--horizontal-spacing);
+}
+
+.linkCurrent {
+    font-weight: bold;
+}

@@ -1,0 +1,6 @@
+{
+    "name": "Core block component",
+    "fileTemplateName": "{{name}}.tsx",
+    "onlyAsPartOfGroup": false,
+    "disabled": false
+}

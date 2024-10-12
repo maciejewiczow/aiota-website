@@ -1,0 +1,6 @@
+{
+    "name": "Core babel story",
+    "fileTemplateName": "{{name}}.stories.tsx",
+    "onlyAsPartOfGroup": true,
+    "disabled": false
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Block index",
+  "fileTemplateName": "index.ts",
+  "onlyAsPartOfGroup": true,
+  "disabled": false
+}

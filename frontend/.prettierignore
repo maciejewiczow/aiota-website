@@ -1,0 +1,7 @@
+possibleTypes.json
+models/*.generated*
+storybook-static
+.next
+.vercel
+out
+node_modules

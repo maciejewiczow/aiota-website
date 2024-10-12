@@ -1,0 +1,9 @@
+{
+  "name": "Nextjs page with styles",
+  "templates": [
+    "nextjs-page",
+    "nextjs-page-styles"
+  ],
+  "templatesUseSameVariables": true,
+  "disabled": false
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Block json metadata",
+  "fileTemplateName": "block.json",
+  "onlyAsPartOfGroup": false,
+  "disabled": false
+}

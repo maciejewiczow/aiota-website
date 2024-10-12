@@ -1,0 +1,111 @@
+{
+    "$schema": "https://getcomposer.org/schema.json",
+    "name": "roots/bedrock",
+    "type": "project",
+    "license": "MIT",
+    "description": "WordPress boilerplate with Composer, easier configuration, and an improved folder structure",
+    "homepage": "https://roots.io/bedrock/",
+    "authors": [
+        {
+            "name": "Scott Walkinshaw",
+            "email": "scott.walkinshaw@gmail.com",
+            "homepage": "https://github.com/swalkinshaw"
+        },
+        {
+            "name": "Ben Word",
+            "email": "ben@benword.com",
+            "homepage": "https://github.com/retlehs"
+        }
+    ],
+    "keywords": [
+        "bedrock",
+        "composer",
+        "roots",
+        "wordpress",
+        "wp",
+        "wp-config"
+    ],
+    "support": {
+        "issues": "https://github.com/roots/bedrock/issues",
+        "forum": "https://discourse.roots.io/category/bedrock"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://wpackagist.org",
+            "only": [
+                "wpackagist-plugin/*",
+                "wpackagist-theme/*"
+            ]
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "wpengine/wp-graphql-content-blocks",
+                "version": "v1.2.0",
+                "type": "wordpress-plugin",
+                "dist": {
+                    "type": "zip",
+                    "url": "https://github.com/wpengine/wp-graphql-content-blocks/releases/download/v1.2.0/wp-graphql-content-blocks.zip"
+                }
+            },
+            "only": [
+                "wpengine/wp-graphql-content-blocks"
+            ]
+        }
+    ],
+    "require": {
+        "php": ">=7.4.33",
+        "composer/installers": "^2.2",
+        "vlucas/phpdotenv": "^5.5",
+        "oscarotero/env": "^2.1",
+        "roots/bedrock-autoloader": "^1.0",
+        "roots/bedrock-disallow-indexing": "^2.0",
+        "roots/wordpress": "6.4.3",
+        "roots/wp-config": "1.0.0",
+        "roots/wp-password-bcrypt": "1.1.0",
+        "wpackagist-plugin/wp-graphql": "^1.21",
+        "wpackagist-plugin/polylang": "^3.5.4",
+        "valu/wp-graphql-polylang": "^0.6.0",
+        "wpackagist-plugin/disable-comments": "^2.4",
+        "wpengine/wp-graphql-content-blocks": "^1.2",
+        "wpackagist-plugin/faustwp": "^1.2.1",
+        "wpackagist-plugin/wordpress-seo": "^22",
+        "ashhitch/wp-graphql-yoast-seo": "^4.22",
+        "wpackagist-plugin/wp-jamstack-deployments": "^1.1",
+        "wpackagist-plugin/file-upload-types": "^1.4"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.7.1",
+        "roave/security-advisories": "dev-latest"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "allow-plugins": {
+            "composer/installers": true,
+            "roots/wordpress-core-installer": true
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "extra": {
+        "installer-paths": {
+            "web/app/mu-plugins/{$name}/": [
+                "type:wordpress-muplugin"
+            ],
+            "web/app/plugins/{$name}/": [
+                "type:wordpress-plugin"
+            ],
+            "web/app/themes/{$name}/": [
+                "type:wordpress-theme"
+            ]
+        },
+        "wordpress-install-dir": "web/wp"
+    },
+    "scripts": {
+        "test": [
+            "phpcs"
+        ]
+    }
+}

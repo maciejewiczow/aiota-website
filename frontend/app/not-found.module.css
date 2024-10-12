@@ -1,0 +1,31 @@
+.root {
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapper {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+}
+
+.separator {
+    display: block;
+    height: 100%;
+    border-left: 1px solid var(--mantine-color-text);
+}
+
+.number {
+    font-size: var(--mantine-h1-font-size);
+    margin: 0;
+}
+
+.text {
+    font-size: var(--mantine-h2-font-size);
+    font-weight: 400;
+    margin: 0;
+}

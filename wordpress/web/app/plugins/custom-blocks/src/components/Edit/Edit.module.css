@@ -1,0 +1,33 @@
+.title {
+    font-weight: 500;
+}
+
+.control {
+    margin-top: 12px;
+}
+
+.controlLabelText {
+    margin-bottom: 8px;
+}
+
+.controls {
+    padding: 8px;
+    padding-top: 0;
+}
+
+.controlsSelected {
+    outline: 2px solid var(--wp--preset--color--vivid-cyan-blue);
+}
+
+.innerBlocksWrapper {
+    border: 1px solid #ddd;
+}
+
+.innerBlocksLabel {
+    margin-top: 12px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1.4;
+}

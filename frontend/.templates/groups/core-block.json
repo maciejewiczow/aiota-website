@@ -1,0 +1,11 @@
+{
+    "name": "Core block",
+    "templates": [
+        "core-block-component",
+        "block-index",
+        "core-block-story",
+        "block-styles"
+    ],
+    "templatesUseSameVariables": true,
+    "disabled": false
+}

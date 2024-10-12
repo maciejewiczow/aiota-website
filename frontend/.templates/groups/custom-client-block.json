@@ -1,0 +1,12 @@
+{
+  "name": "Custom client block",
+  "templates": [
+    "block-index",
+    "block-story",
+    "block-styles",
+    "client-block-component",
+    "client-block-queries-file"
+  ],
+  "templatesUseSameVariables": true,
+  "disabled": false
+}

@@ -1,0 +1,8 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /${WORDPRESS_DESTINATION_DIR}/web
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /${WORDPRESS_DESTINATION_DIR}/web/index.php [L]
+</IfModule>

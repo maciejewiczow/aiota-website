@@ -1,0 +1,14 @@
+import { gql, TypedDocumentNode } from '@apollo/client';
+import { <%= name %>Fragment } from '~/models/graphql.generated';
+import { BlockComponent } from '~/blocks/types';
+import classes from './<%= name %>.module.css';
+
+export const core<%= name %>Fragment: TypedDocumentNode<Core<%= name %>Fragment> = gql`
+    fragment Core<%= name %> on Core<%= name %> {
+
+    }
+`;
+
+export const <%= name %>: BlockComponent<'Core<%= name %>'> = ({ block }) => (
+    <div />
+);

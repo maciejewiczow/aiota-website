@@ -1,0 +1,33 @@
+import type { Meta, StoryObj } from '@storybook/react';
+import { <%= name %> as <%= name %>Component } from './<%= name %>';
+
+interface StoryArgs {
+
+}
+
+const meta: Meta<StoryArgs> = {
+    component: ({ }) => (
+        <<%= name %>Component
+            block={{
+                __typename: 'Core<%= name %>',
+                clientId: null,
+                parentClientId: null,
+                name: null,
+                renderedHtml: null,
+                attributes: {
+                    __typename: 'Core<%= name %>Attributes',
+
+                },
+            }}
+        />
+    ),
+};
+
+export default meta;
+type Story = StoryObj<StoryArgs>;
+
+export const <%= name %>: Story = {
+    args: {
+
+    },
+};

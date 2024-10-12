@@ -1,0 +1,16 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "custom/floating-language-switcher",
+    "version": "0.1.0",
+    "title": "Floating language switcher",
+    "description": "Language switcher that is anchored in one of the four corners of the screen",
+    "attributes": {
+        "corner": {
+            "type": "string"
+        }
+    },
+    "allowedBlocks": [],
+    "editorScript": "file:./index.js",
+    "editorStyle": "file:./index.css"
+}

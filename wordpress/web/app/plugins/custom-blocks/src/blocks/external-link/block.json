@@ -1,0 +1,21 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "custom/external-link",
+    "version": "0.1.0",
+    "title": "External link",
+    "description": "Link to an external website",
+    "attributes": {
+        "link": {
+            "type": "string"
+        },
+        "blank": {
+            "type": "boolean"
+        },
+        "linkAppearance": {
+            "type": "boolean"
+        }
+    },
+    "editorScript": "file:./index.js",
+    "editorStyle": "file:./index.css"
+}

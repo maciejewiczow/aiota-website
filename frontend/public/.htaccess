@@ -1,0 +1,1 @@
+ErrorDocument 404 /${WEBPAGE_DESTINATION_DIR}/404.html

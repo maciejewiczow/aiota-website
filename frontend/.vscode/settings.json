@@ -1,0 +1,12 @@
+{
+    "eslint.options": {
+        "overrideConfig": {
+            "plugins": ["only-warn", "no-autofix"],
+            "rules": {
+                "@typescript-eslint/no-unused-vars": "off",
+                "prefer-const": "off",
+                "no-autofix/prefer-const": "warn"
+            }
+        }
+    }
+}

@@ -1,0 +1,13 @@
+.root {
+    color: var(--mantine-color-text);
+    text-decoration: none;
+    text-underline-offset: 4px;
+
+    &:visited {
+        color: var(--mantine-color-text);
+    }
+}
+
+.link:hover {
+    text-decoration: underline;
+}

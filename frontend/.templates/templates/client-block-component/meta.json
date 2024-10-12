@@ -1,0 +1,6 @@
+{
+    "name": "Client block component",
+    "fileTemplateName": "{{name}}.tsx",
+    "onlyAsPartOfGroup": false,
+    "disabled": false
+}

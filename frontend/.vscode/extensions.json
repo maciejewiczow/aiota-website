@@ -1,0 +1,14 @@
+{
+    "recommendations": [
+        "wayou.vscode-todo-highlight",
+        "formulahendry.auto-rename-tag",
+        "formulahendry.auto-close-tag",
+        "dbaeumer.vscode-eslint",
+        "gautier-lfbvr.file-template-manager",
+        "yoavbls.pretty-ts-errors",
+        "esbenp.prettier-vscode",
+        "rvest.vs-code-prettier-eslint",
+        "graphql.vscode-graphql-syntax",
+        "graphql.vscode-graphql"
+    ]
+}

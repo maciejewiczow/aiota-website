@@ -1,0 +1,12 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "custom/organization-logo",
+    "version": "0.1.0",
+    "title": "Organization logo",
+    "description": "Logo of the organization, as set in the Yoast SEO plugin options",
+    "attributes": {},
+    "allowedBlocks": [],
+    "editorScript": "file:./index.js",
+    "editorStyle": "file:./index.css"
+}

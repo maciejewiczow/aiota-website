@@ -1,0 +1,25 @@
+.root {
+    font-family: var(--font-heading);
+    margin: 0;
+    text-align: center;
+
+    @media (min-width: $mantine-breakpoint-md) {
+        text-align: left;
+    }
+}
+
+.small {
+    font-size: 18px;
+}
+
+.medium {
+    font-size: 26px;
+}
+
+.large {
+    font-size: 32px;
+}
+
+.xLarge {
+    font-size: 38px;
+}

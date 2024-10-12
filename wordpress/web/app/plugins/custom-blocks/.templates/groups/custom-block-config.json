@@ -1,0 +1,10 @@
+{
+  "name": "Custom block config",
+  "templates": [
+    "block-editor-config",
+    "block-index",
+    "block-json-metadata"
+  ],
+  "templatesUseSameVariables": true,
+  "disabled": false
+}

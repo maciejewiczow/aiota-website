@@ -1,0 +1,1 @@
+export { AGHColorsBackground } from './AGHColorsBackground';

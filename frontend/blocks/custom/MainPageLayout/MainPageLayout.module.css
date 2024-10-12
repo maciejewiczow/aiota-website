@@ -1,0 +1,49 @@
+.root {
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+
+    padding: 32px 16px;
+
+    @media (min-width: $mantine-breakpoint-md) {
+        height: unset;
+
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto 1fr auto;
+        grid-template-areas:
+            'logo header'
+            'logo socials'
+            'logo emails';
+
+        column-gap: 32px;
+    }
+}
+
+.logo {
+    grid-area: logo;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header {
+    grid-area: header;
+
+    text-align: center;
+
+    @media (min-width: $mantine-breakpoint-md) {
+        text-align: left;
+    }
+}
+
+.socials {
+    grid-area: socials;
+}
+
+.emails {
+    grid-area: emails;
+}

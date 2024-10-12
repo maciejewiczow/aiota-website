@@ -1,0 +1,4 @@
+possibleTypes.json
+models/*.generated*
+.vercel
+storybook-static

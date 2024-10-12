@@ -1,0 +1,50 @@
+{
+    "folders": [
+        {
+            "path": ".",
+            "name": "Root"
+        },
+        {
+            "path": "wordpress",
+            "name": "Wordpress"
+        },
+        {
+            "path": "frontend",
+            "name": "Frontend"
+        },
+        {
+            "name": "Custom blocks",
+            "path": "wordpress/web/app/plugins/custom-blocks"
+        }
+    ],
+    "settings": {
+        "editor.detectIndentation": false,
+        "editor.indentSize": "tabSize",
+        "editor.tabSize": 4,
+        "files.exclude": {
+            "**/node_modules": true
+        },
+        "editor.codeActionsOnSave": {
+            "source.fixAll": "explicit"
+        },
+        "files.trimTrailingWhitespace": true,
+        "files.insertFinalNewline": true,
+        "typescript.format.enable": true,
+        "eslint.lintTask.enable": true,
+        "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
+        "editor.formatOnPaste": false,
+        "editor.formatOnType": false,
+        "editor.formatOnSave": true,
+        "editor.formatOnSaveMode": "file",
+        "vs-code-prettier-eslint.prettierLast": false,
+        "files.associations": {
+            "*.env*": "ini"
+        },
+        "[php]": {
+            "editor.defaultFormatter": "DEVSENSE.phptools-vscode"
+        },
+        "[postcss]": {
+            "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+        }
+    }
+}

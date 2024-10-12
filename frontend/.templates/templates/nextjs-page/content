@@ -1,0 +1,7 @@
+<% if (groupTemplates.length > 1) { %>import styles from './page.module.css'
+
+<% } %>export default function <%= pageName %>Page() {
+    return (
+        <></>
+    );
+}

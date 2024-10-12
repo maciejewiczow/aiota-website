@@ -1,0 +1,14 @@
+import { gql, TypedDocumentNode } from '@apollo/client';
+import { <%= name %>Fragment } from '~/models/graphql.generated';
+import { BlockComponent } from '~/blocks/types';
+import classes from './<%= name %>.module.css';
+
+export const <%= name.slice(0, 1).toLowerCase() + name.slice(1) %>Fragment: TypedDocumentNode<<%= name %>Fragment> = gql`
+    fragment <%= name %> on Custom<%= name %> {
+
+    }
+`;
+
+export const <%= name %>: BlockComponent<'Custom<%= name %>'> = ({ block }) => (
+    <div />
+);

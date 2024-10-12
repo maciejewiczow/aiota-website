@@ -1,0 +1,6 @@
+{
+  "name": "Main plugin file",
+  "fileTemplateName": "{{name}}.php",
+  "onlyAsPartOfGroup": false,
+  "disabled": false
+}

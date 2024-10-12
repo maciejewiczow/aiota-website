@@ -1,0 +1,6 @@
+{
+  "name": "Block styles",
+  "fileTemplateName": "{{name}}.module.css",
+  "onlyAsPartOfGroup": true,
+  "disabled": false
+}

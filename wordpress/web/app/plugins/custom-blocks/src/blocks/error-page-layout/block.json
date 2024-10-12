@@ -1,0 +1,11 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "custom/error-page-layout",
+    "version": "0.1.0",
+    "title": "Error page layout",
+    "description": "Layout used on the 404 error page",
+    "attributes": {},
+    "editorScript": "file:./index.js",
+    "editorStyle": "file:./index.css"
+}

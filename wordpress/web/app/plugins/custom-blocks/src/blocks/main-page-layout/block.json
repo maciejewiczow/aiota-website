@@ -1,0 +1,12 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "custom/main-page-layout",
+    "version": "0.1.0",
+    "title": "Main page layout",
+    "description": "Layout of the main page",
+    "attributes": {},
+    "allowedBlocks": ["custom/laout-slot"],
+    "editorScript": "file:./index.js",
+    "editorStyle": "file:./index.css"
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Block editor config",
+  "fileTemplateName": "editorConfig.ts",
+  "onlyAsPartOfGroup": false,
+  "disabled": false
+}

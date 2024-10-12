@@ -1,0 +1,11 @@
+{
+  "name": "Custom block",
+  "templates": [
+    "block-component",
+    "block-index",
+    "block-story",
+    "block-styles"
+  ],
+  "templatesUseSameVariables": true,
+  "disabled": false
+}

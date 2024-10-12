@@ -1,0 +1,16 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "custom/test-block-with-children",
+    "version": "0.1.0",
+    "title": "Test block with children",
+    "description": "Testing inner blocks",
+    "attributes": {
+        "testOwnAttribute": {
+            "type": "string",
+            "default": "Test test"
+        }
+    },
+    "editorScript": "file:./index.js",
+    "editorStyle": "file:./index.css"
+}

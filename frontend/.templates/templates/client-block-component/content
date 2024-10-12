@@ -1,0 +1,8 @@
+'use client';
+
+import { BlockComponent } from '~/blocks/types';
+import classes from './<%= name %>.module.css';
+
+export const <%= name %>: BlockComponent<'Custom<%= name %>'> = ({ block }) => (
+    <div />
+);

@@ -1,0 +1,17 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "custom/dotted-horizontal-list",
+    "version": "0.1.0",
+    "title": "Dotted horizontal list",
+    "description": "A horizontal list that adds dots between it's children",
+    "attributes": {},
+    "allowedBlocks": [
+        "core/paragraph",
+        "custom/internal-link",
+        "custom/external-link",
+        "core/file"
+    ],
+    "editorScript": "file:./index.js",
+    "editorStyle": "file:./index.css"
+}

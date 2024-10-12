@@ -1,0 +1,5 @@
+<IfModule mod_rewrite.c>
+RewriteEngine on
+RewriteCond %{REQUEST_URI} !${WORDPRESS_DESTINATION_DIR}/web/
+RewriteRule ^(.*)$ /${WORDPRESS_DESTINATION_DIR}/web/$1 [L]
+</IfModule>
