@@ -1,0 +1,74 @@
+name: Setup frontend project
+description: Initalize frontend project for other command to be run
+
+inputs:
+  skip-server:
+    description: Skip setting up local wp instance
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 20
+        cache-dependency-path: ./frontend/package-lock.json
+        cache: 'npm'
+
+    - name: Install frontend dependencies
+      shell: bash
+      run: npm ci
+      working-directory: ./frontend
+
+    - name: Install blocks dependencies
+      shell: bash
+      run: npm ci
+      working-directory: ./wordpress/web/app/plugins/custom-blocks
+
+    - if: ${{ !inputs.skip-server }}
+      name: Install wordpress dependencies
+      uses: php-actions/composer@v6
+      env:
+        COMPOSER: "composer.json"
+      with:
+        working_dir: ./wordpress
+
+    - if: ${{ !inputs.skip-server }}
+      uses: isbang/compose-action@v1.5.1
+      name: Start a server instance to use in the pipeline
+      with:
+        compose-file: ./docker-compose.yaml
+      env:
+        DB_ROOT_PASSWORD: "3974a5af-317d-5d23-ac41-967aa4795683"
+        DB_NAME: "WP_DB"
+        DB_USER: "Wordpress"
+        DB_USER_PASSWORD: "ca0f5308-6a49-59bc-b458-281a830f79de"
+        WP_AUTH_KEY: "7aq*0x#b5AW[w>[t]=g{55dBr70,0&yLQYwZ{U.C`L^wRGd%Hccw0>6<*zy,J;uO"
+        WP_SECURE_AUTH_KEY: "D$o^fGyrI9mu|Ap=@]voP#iL<Y0N,K%MJ9F/fYux5J+l!FXvq5q5#_o,L?ct9y8B"
+        WP_LOGGED_IN_KEY: "gAVP{(sZnJE@V8U%+wj2^N).FH;y8*CQ`U@+P{3/Ok1T:<P;LmuRx=0:FjJrERL*"
+        WP_NONCE_KEY: "-m7jI4|*vL%^l7*Cou-Z<n`*EB4}6O4$HKf=dnv>!Hs=mf@,!Isao8!-fwIw4<4U"
+        WP_AUTH_SALT: "So7TIC0WrplNI&e<K(}}HfZF<o1wNdSqqDweHH@M><EL$t{fKCa:;@/I&B#,n+&F"
+        WP_SECURE_AUTH_SALT: "nSBdAU0c}#j72;[@xc^X2Yvd^l_Aw:-_bWyvcolIt7.T9=xdNC5{HP-y!H[q=B[0"
+        WP_LOGGED_IN_SALT: "6AI&+(s<p7{NPv2}U{9wXg8u>CY,d,-v^TAJ[3/K=D+Hm*AP.3uB{{Uaqt1nlr^G"
+        WP_NONCE_SALT: "_$0RvaJ9KP:t%^2*OWi,Pdc=IzRK0dV_1771{6dGUGMx3YiQA]X=,%AZ#n<7]YD!"
+
+    - if: ${{ !inputs.skip-server }}
+      name: Activate all wordpress plugins
+      shell: bash
+      run: docker exec wordpress-php wp plugin activate --all --allow-root
+
+    - if: ${{ !inputs.skip-server }}
+      shell: bash
+      name: Run custom blocks build
+      run: npm run build
+      env:
+        NEXT_PUBLIC_WORDPRESS_URL: "http://localhost:8000"
+      working-directory: ./wordpress/web/app/plugins/custom-blocks
+
+    - if: ${{ !inputs.skip-server }}
+      name: Generate missing GQL type files in frontend
+      env:
+        NEXT_PUBLIC_WORDPRESS_URL: "http://localhost:8000"
+      shell: bash
+      run: npm run prebuild
+      working-directory: ./frontend
+

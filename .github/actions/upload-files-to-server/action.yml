@@ -1,0 +1,54 @@
+name: Upload files
+description: Upload files to a remote server via SSH through a VPN
+inputs:
+  remote-filesystem-destination:
+    description: The path on the remote server that the files will be uploaded to
+    required: true
+  remote-username:
+    description: The username that will be used to login to the remote server via SSH
+    required: true
+  remote-address:
+    description: The address of the remote server
+    required: true
+  ovpn-config-file:
+    description: Path to the OpenVPN config file used to establish the connection
+    required: true
+  ovpn-client-key:
+    description: Client key used to establish the connection
+    required: true
+  ovpn-tls-auth-key:
+    description: TLS auth key used to establish the VPN connection
+    required: true
+  ssh-deploy-key:
+    description: SHH private key used to login to the remote server
+    required: true
+  workdir:
+    description: Set the working directory for the action
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Install OpenVPN
+      shell: bash
+      run: |
+        sudo apt update
+        sudo apt install -y openvpn openvpn-systemd-resolved
+    - name: Connect to VPN
+      uses: "kota65535/github-openvpn-connect-action@v2"
+      with:
+        config_file: ${{ inputs.ovpn-config-file }}
+        client_key: ${{ inputs.ovpn-client-key }}
+        tls_auth_key: ${{ inputs.ovpn-tls-auth-key }}
+
+    - name: Upload files to the server
+      shell: bash
+      working-directory: ${{ inputs.workdir }}
+      run: |
+        echo "${{ inputs.ssh-deploy-key }}" > deploy_key
+        chmod 600 ./deploy_key
+        rsync -chav --delete \
+          --exclude '*uploads*' \
+          -e 'ssh -i ./deploy_key -o StrictHostKeyChecking=no' \
+          --exclude /deploy_key \
+          ./ '${{ inputs.remote-username }}@${{ inputs.remote-address }}:${{ inputs.remote-filesystem-destination }}'
