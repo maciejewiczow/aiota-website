@@ -79,15 +79,11 @@ jobs:
           node-version: 20
           cache-dependency-path: ./wordpress/web/app/plugins/custom-blocks/package-lock.json
           cache: 'npm'
+      - name: Spin up frontend dependencies
+        uses: ./.github/actions/setup-frontend-deps
       - name: Install custom blocks dependencies
         run: npm ci
         working-directory: ./wordpress/web/app/plugins/custom-blocks
-      - name: Build custom blocks
-        run: npm run build
-        working-directory: ./wordpress/web/app/plugins/custom-blocks
-        env:
-          # This will cause the generated possibleTypes to be outdated, but that should not be a big issue
-          NEXT_PUBLIC_WORDPRESS_URL: "https://${{ vars.WEBPAGE_DOMAIN }}/${{ vars.WORDPRESS_DESTINATION_DIR }}"
       - name: Remove blocks node_modules
         run: rm -rf node_modules
         working-directory: ./wordpress/web/app/plugins/custom-blocks
