@@ -1,0 +1,23 @@
+name: Build and deploy integration
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  wordpress:
+    uses: ./.github/workflows/deploy-wordpress.yml
+    secrets: inherit
+    with:
+      GH_ENVIRONMENT: Integration
+
+  frontend:
+    uses: ./.github/workflows/deploy-frontend.yml
+    needs:
+      wordpress
+    secrets: inherit
+    with:
+      GH_ENVIRONMENT: Integration
+
+

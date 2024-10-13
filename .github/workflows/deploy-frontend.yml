@@ -1,0 +1,66 @@
+name: Build and deploy frontend
+
+on:
+  workflow_call:
+    inputs:
+      GH_ENVIRONMENT:
+        required: true
+        type: string
+    secrets:
+      OVPN_CLIENT_KEY:
+        required: true
+      OVPN_TLS_AUTH_KEY:
+        required: true
+      SSH_DEPLOY_KEY:
+        required: true
+
+concurrency:
+  group: deploy-frontend-${{ inputs.GH_ENVIRONMENT }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    name: Build and deploy
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.GH_ENVIRONMENT }}
+    defaults:
+      run:
+        working-directory: ./frontend
+    env:
+      NEXT_PUBLIC_WORDPRESS_URL: "https://${{ vars.WEBPAGE_DOMAIN }}/${{ vars.WORDPRESS_DESTINATION_DIR }}"
+      NEXT_BASE_PATH: "${{ vars.WEBPAGE_BASE_PATH }}"
+      NEXT_PUBLIC_SITE_URL: "https://${{ vars.WEBPAGE_DOMAIN }}${{ vars.WEBPAGE_BASE_PATH }}"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          cache-dependency-path: ./frontend/package-lock.json
+          cache: 'npm'
+      - name: Install dependencies
+        run: npm ci
+      - name: Replace variables in .htaccess file
+        uses: iamazeem/substitute-action@v1
+        env:
+            WORDPRESS_DESTINATION_DIR: ${{ vars.WORDPRESS_DESTINATION_DIR }}
+            WEBPAGE_DESTINATION_DIR: ${{ vars.WEBPAGE_DESTINATION_DIR }}
+        with:
+            input-files: |
+                ./frontend/public/.htaccess
+            variables: |
+                WORDPRESS_DESTINATION_DIR
+                WEBPAGE_DESTINATION_DIR
+            enable-in-place: true
+      - name: Build app
+        run: npm run build
+      - name: Upload files to the server
+        uses: ./.github/actions/upload-files-to-server
+        with:
+          remote-filesystem-destination: "public_html/${{ vars.WEBPAGE_DESTINATION_DIR }}"
+          remote-username: "${{ vars.REMOTE_USERNAME }}"
+          remote-address: "${{ vars.REMOTE_ADDRESS }}"
+          ovpn-config-file: "${{ vars.OVPN_CONFIG_FILE }}"
+          ovpn-client-key: "${{ secrets.OVPN_CLIENT_KEY }}"
+          ovpn-tls-auth-key: "${{ secrets.OVPN_TLS_AUTH_KEY }}"
+          ssh-deploy-key: "${{ secrets.SSH_DEPLOY_KEY }}"
+          workdir: './frontend/out'

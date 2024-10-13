@@ -1,0 +1,23 @@
+name: Build and deploy production
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  wordpress:
+    uses: ./.github/workflows/deploy-wordpress.yml
+    secrets: inherit
+    with:
+      GH_ENVIRONMENT: Production
+
+  frontend:
+    uses: ./.github/workflows/deploy-frontend.yml
+    needs:
+      wordpress
+    secrets: inherit
+    with:
+      GH_ENVIRONMENT: Production
+
+

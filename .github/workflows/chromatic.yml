@@ -1,0 +1,39 @@
+name: Deploy chromatic
+
+on: push
+
+jobs:
+  chromatic-deployment:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./frontend
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          cache-dependency-path: ./frontend/package-lock.json
+          cache: 'npm'
+
+      - name: Install frontend dependencies
+        shell: bash
+        run: npm ci
+
+      - name: Publish frontend to Chromatic
+        id: chromatic
+        uses: chromaui/action@v1
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          workingDir: frontend
+      - name: Publish deployment summary
+        run: |
+          cat << 'EOF' >> $GITHUB_STEP_SUMMARY
+          | Results |  |
+          | --- | --- |
+          | Build Results | ${{ steps.chromatic.outputs.buildUrl }} |
+          | Storybook Preview | ${{ steps.chromatic.outputs.storybookUrl }} |
+          | Component Count | ${{ steps.chromatic.outputs.componentCount }} |
+          EOF
