@@ -2,10 +2,13 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { LogoDataProvider } from '~/context/LogoData';
 import { OrganizationLogo as OrganizationLogoComponent } from './OrganizationLogo';
 
-interface StoryArgs {}
+interface StoryArgs {
+    width: number;
+    height: number;
+}
 
 const meta: Meta<StoryArgs> = {
-    component: () => (
+    component: ({ width, height }) => (
         <LogoDataProvider
             value={{
                 __typename: 'SEOConfig',
@@ -27,6 +30,11 @@ const meta: Meta<StoryArgs> = {
                     parentClientId: null,
                     name: null,
                     renderedHtml: null,
+                    attributes: {
+                        __typename: 'CustomOrganizationLogoAttributes',
+                        width,
+                        height,
+                    },
                 }}
             />
         </LogoDataProvider>
@@ -37,5 +45,8 @@ export default meta;
 type Story = StoryObj<StoryArgs>;
 
 export const OrganizationLogo: Story = {
-    args: {},
+    args: {
+        width: 120,
+        height: 300,
+    },
 };
