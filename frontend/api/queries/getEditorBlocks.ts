@@ -7,6 +7,7 @@ import { floatingLanguageSwitcherFragment } from '~/blocks/custom/FloatingLangua
 import { fullHeightPageFragment } from '~/blocks/custom/FullHeightPage/FullHeightPage.queries';
 import { internalLinkFragment } from '~/blocks/custom/InternalLink';
 import { layoutSlotFragment } from '~/blocks/custom/LayoutSlot';
+import { organizationLogoFragment } from '~/blocks/custom/OrganizationLogo';
 import { testBlockFragment } from '~/blocks/custom/TestBlock';
 import { GetEditorBlocksByUriQuery } from '~/models/graphql.generated';
 
@@ -20,6 +21,7 @@ export const getEditorBlocksByUri: TypedDocumentNode<GetEditorBlocksByUriQuery> 
     ${internalLinkFragment}
     ${coreFileFragment}
     ${floatingLanguageSwitcherFragment}
+    ${organizationLogoFragment}
 
     query GetEditorBlocksByUri($uri: String!) {
         nodeByUri(uri: $uri) {
@@ -40,6 +42,7 @@ export const getEditorBlocksByUri: TypedDocumentNode<GetEditorBlocksByUriQuery> 
                     ...InternalLink
                     ...CoreFile
                     ...FloatingLanguageSwitcher
+                    ...OrganizationLogo
                 }
             }
         }

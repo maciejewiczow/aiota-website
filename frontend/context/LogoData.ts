@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import invariant from 'tiny-invariant';
 import { GetInitialDataQuery } from '~/models/graphql.generated';
