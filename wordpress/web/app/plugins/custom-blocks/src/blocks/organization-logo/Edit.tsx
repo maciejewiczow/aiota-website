@@ -32,11 +32,11 @@ export const Edit: React.FC<BlockEditProps<Record<string, unknown>>> = ({
         if (
             data &&
             data.seo?.schema?.logo?.mediaDetails?.width &&
-            data.seo?.schema?.logo?.mediaDetails?.height
+            !attributes.width
         ) {
             setWidth(data.seo.schema.logo.mediaDetails.width);
         }
-    }, [data]);
+    }, [attributes.width, data]);
 
     if (loading) {
         return <div {...blockProps}>Loading...</div>;
