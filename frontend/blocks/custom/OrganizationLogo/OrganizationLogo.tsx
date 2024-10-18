@@ -17,9 +17,16 @@ export const OrganizationLogo: BlockComponent<'CustomOrganizationLogo'> = ({
 }) => {
     const data = useLogoData();
 
+    const aspect =
+        (data.schema?.logo?.mediaDetails?.width ?? 1) /
+        (data.schema?.logo?.mediaDetails?.height ?? 1);
+
     return (
         data.schema?.logo?.sourceUrl && (
             <img
+                style={{
+                    aspectRatio: aspect,
+                }}
                 width={attributes?.width ?? undefined}
                 height={attributes?.height ?? undefined}
                 src={data.schema?.logo?.sourceUrl}

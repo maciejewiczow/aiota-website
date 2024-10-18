@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { gql, useQuery } from '@apollo/client';
 import { useBlockProps } from '@wordpress/block-editor';
 import { BlockEditProps } from '@wordpress/blocks';
@@ -25,15 +26,21 @@ export const Edit: React.FC<BlockEditProps<Record<string, unknown>>> = ({
         }
     `);
     const blockProps = useBlockProps();
+    const [width, setWidth] = useState<number>(attributes.width as number);
+
+    useEffect(() => {
+        if (
+            data &&
+            data.seo?.schema?.logo?.mediaDetails?.width &&
+            data.seo?.schema?.logo?.mediaDetails?.height
+        ) {
+            setWidth(data.seo.schema.logo.mediaDetails.width);
+        }
+    }, [data]);
 
     if (loading) {
         return <div {...blockProps}>Loading...</div>;
     }
-
-    const width = (attributes.width ??
-        data.seo?.schema?.logo?.mediaDetails?.width) as number;
-    const height = (attributes.height ??
-        data.seo?.schema?.logo?.mediaDetails?.height) as number;
 
     const aspect =
         data.seo?.schema?.logo?.mediaDetails?.width &&
@@ -42,6 +49,8 @@ export const Edit: React.FC<BlockEditProps<Record<string, unknown>>> = ({
               data.seo?.schema?.logo?.mediaDetails?.height
             : 1;
 
+    const height = width / aspect;
+
     const imgWidth = width > height ? 'unset' : '100%';
     const imgHeight = width > height ? '100%' : 'unset';
 
@@ -49,25 +58,29 @@ export const Edit: React.FC<BlockEditProps<Record<string, unknown>>> = ({
         <div {...blockProps}>
             <ResizableBox
                 enable={{
-                    bottom: true,
+                    bottom: false,
                     bottomLeft: false,
                     bottomRight: true,
                     left: false,
-                    right: true,
+                    right: false,
                     top: false,
                     topLeft: false,
                     topRight: false,
                 }}
                 showHandle={isSelected}
-                onResize={(_, __, ref) => setAttributes({
+                onResize={(_, __, ref) => {
+                    setWidth(ref.clientWidth);
+
+                    setAttributes({
                         width: ref.clientWidth,
                         height: ref.clientHeight,
-                    })
-                }
+                    });
+                }}
                 size={{
                     width,
                     height,
                 }}
+                lockAspectRatio={aspect}
                 __experimentalShowTooltip
             >
                 <img

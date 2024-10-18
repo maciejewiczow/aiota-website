@@ -19,6 +19,11 @@ const meta: Meta<StoryArgs> = {
                         altText: 'Shrek',
                         sourceUrl:
                             'https://postacie.com.pl/environment/cache/images/500_500_productGfx_908/Shrek-01b.jpg',
+                        mediaDetails: {
+                            __typename: 'MediaDetails',
+                            width: 300,
+                            height: 300,
+                        },
                     },
                 },
             }}

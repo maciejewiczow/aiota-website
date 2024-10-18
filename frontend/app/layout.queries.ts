@@ -11,6 +11,10 @@ export const initialQuery: TypedDocumentNode<GetInitialDataQuery> = gql`
                 logo {
                     sourceUrl
                     altText
+                    mediaDetails {
+                        width
+                        height
+                    }
                 }
             }
         }
