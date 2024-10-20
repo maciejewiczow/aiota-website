@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { getClient } from '~/api/apolloClient';
 import { seedQuery } from '~/api/queries/seedQuery';
+import { LangAwareHtml } from '~/components/LangAwareHtml';
 import { WordpressTemplateViewer } from '~/components/WordpressTemplateViewer';
 import { PageProviders } from '~/context/PageProviders';
 import { getSeoMetadata } from '~/utils/getSeoMetadata';
@@ -15,11 +16,13 @@ export default async function RootPage() {
     });
 
     return (
-        <PageProviders seedQuery={data}>
-            <WordpressTemplateViewer
-                seedQuery={data}
-                uri="/"
-            />
-        </PageProviders>
+        <LangAwareHtml path="/">
+            <PageProviders seedQuery={data}>
+                <WordpressTemplateViewer
+                    seedQuery={data}
+                    uri="/"
+                />
+            </PageProviders>
+        </LangAwareHtml>
     );
 }
