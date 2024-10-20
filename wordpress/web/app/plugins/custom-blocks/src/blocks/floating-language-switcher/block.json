@@ -7,7 +7,8 @@
     "description": "Language switcher that is anchored in one of the four corners of the screen",
     "attributes": {
         "corner": {
-            "type": "string"
+            "type": "string",
+            "default": "top-right"
         }
     },
     "allowedBlocks": [],

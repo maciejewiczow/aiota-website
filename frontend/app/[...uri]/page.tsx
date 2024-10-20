@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import { getClient } from '~/api/apolloClient';
 import { seedQuery } from '~/api/queries/seedQuery';
+import { LangAwareHtml } from '~/components/LangAwareHtml';
 import { WordpressTemplateViewer } from '~/components/WordpressTemplateViewer';
 import { PageProviders } from '~/context/PageProviders';
 import { getSeoMetadata } from '~/utils/getSeoMetadata';
@@ -60,11 +61,13 @@ export default async function NodeByUriPage({
     }
 
     return (
-        <PageProviders seedQuery={data}>
-            <WordpressTemplateViewer
-                seedQuery={data}
-                uri={uriString}
-            />
-        </PageProviders>
+        <LangAwareHtml path={uriString}>
+            <PageProviders seedQuery={data}>
+                <WordpressTemplateViewer
+                    seedQuery={data}
+                    uri={uriString}
+                />
+            </PageProviders>
+        </LangAwareHtml>
     );
 }
